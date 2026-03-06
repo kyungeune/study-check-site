@@ -1,8 +1,8 @@
 // ============================================================
 //  ⚙️  Supabase 설정 — 아래 두 값을 본인 것으로 교체하세요!
 // ============================================================
-const SUPABASE_URL = 'https://your-project-id.supabase.co';   // ← 교체
-const SUPABASE_ANON_KEY = 'your-anon-key-here';               // ← 교체
+const SUPABASE_URL = 'https://lvqsdmoxkckbsodabnmg.supabase.co';   // ← 교체
+const SUPABASE_ANON_KEY = 'sb_publishable__k4WNWAVzoCM_Vu9KhZ-tQ_2VEWUsWP';               // ← 교체
 // ============================================================
 
 // Supabase 클라이언트 초기화
