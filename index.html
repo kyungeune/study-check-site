@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>스터디 참여 체크</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="bg-blur"></div>
+
+  <main class="container">
+
+    <!-- 헤더 -->
+    <header class="card header-card">
+      <div class="header-icon">📚</div>
+      <h1>스터디 출석 체크</h1>
+      <p class="today-date" id="todayDate">날짜 로딩 중...</p>
+    </header>
+
+    <!-- 입력 폼 -->
+    <section class="card form-card">
+      <h2 class="section-title">✏️ 참여 등록</h2>
+
+      <!-- 이름 선택 -->
+      <div class="field-group">
+        <label for="nameSelect">이름 선택</label>
+        <div class="select-wrapper">
+          <select id="nameSelect">
+            <option value="">-- 이름을 선택하세요 --</option>
+            <option value="김민준">김민준</option>
+            <option value="이서연">이서연</option>
+            <option value="박지호">박지호</option>
+            <option value="최수아">최수아</option>
+            <option value="정도윤">정도윤</option>
+            <option value="한예린">한예린</option>
+            <option value="오시우">오시우</option>
+            <option value="윤하은">윤하은</option>
+            <option value="임준서">임준서</option>
+            <option value="강나연">강나연</option>
+          </select>
+          <span class="select-arrow">▾</span>
+        </div>
+      </div>
+
+      <!-- 스터디 체크박스 -->
+      <div class="field-group">
+        <label>참여 스터디</label>
+        <div class="check-group">
+          <label class="check-card" id="morningCard">
+            <input type="checkbox" id="morningCheck" />
+            <div class="check-content">
+              <span class="check-emoji">🌅</span>
+              <span class="check-label">아침 스터디</span>
+              <span class="check-sub">Morning</span>
+            </div>
+            <span class="check-indicator"></span>
+          </label>
+
+          <label class="check-card" id="eveningCard">
+            <input type="checkbox" id="eveningCheck" />
+            <div class="check-content">
+              <span class="check-emoji">🌙</span>
+              <span class="check-label">저녁 스터디</span>
+              <span class="check-sub">Evening</span>
+            </div>
+            <span class="check-indicator"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 저장 버튼 -->
+      <button class="save-btn" id="saveBtn" onclick="saveAttendance()">
+        <span id="btnText">참여 저장하기</span>
+        <span id="btnSpinner" class="spinner hidden"></span>
+      </button>
+
+      <!-- 메시지 -->
+      <div id="message" class="message hidden"></div>
+    </section>
+
+    <!-- 오늘 참여 현황 -->
+    <section class="card stats-card">
+      <h2 class="section-title">📊 오늘 참여 인원</h2>
+      <div class="stats-grid">
+        <div class="stat-box morning">
+          <div class="stat-emoji">🌅</div>
+          <div class="stat-label">아침 스터디</div>
+          <div class="stat-count" id="morningCount">-</div>
+          <div class="stat-unit">명</div>
+        </div>
+        <div class="stat-box evening">
+          <div class="stat-emoji">🌙</div>
+          <div class="stat-label">저녁 스터디</div>
+          <div class="stat-count" id="eveningCount">-</div>
+          <div class="stat-unit">명</div>
+        </div>
+      </div>
+      <button class="refresh-btn" onclick="loadStats()">🔄 새로고침</button>
+
+      <!-- 참여자 목록 -->
+      <div id="attendeeList" class="attendee-list hidden">
+        <div class="attendee-section">
+          <div class="attendee-title">🌅 아침 참여자</div>
+          <div id="morningList" class="attendee-names"></div>
+        </div>
+        <div class="attendee-section">
+          <div class="attendee-title">🌙 저녁 참여자</div>
+          <div id="eveningList" class="attendee-names"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
